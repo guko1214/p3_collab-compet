@@ -59,7 +59,7 @@ WEIGHT_DECAY = 0        # L2 weight decay
 
 ## Training results
 
-![Score chart](chart.png)
+![Score chart](Chart.png)
 
 The environment was solved in 3252 episodes.
 
