@@ -1,4 +1,4 @@
-# Report of the Project: Continuous Control
+# Report of the Project: Collaboration and Competition
 
  ## Learning algorithm
 
@@ -6,10 +6,12 @@
 
  The DDPG algorithm is an actor-critic based algorithm used for learning **continuous** action spaces. 
  #### Components
+ 
  The agent has two type of neural networks: an actor network and a critic network. The actor network is used to select best actions for each state, <br>
  while the critic network is used to estimate the Q-value function for each state-action pair.<br>
  Two networks with identical architecture are initiated for both actor network and critic network, which are called local network and target network, respectively for stable training of the networks.<br>
  As DDPG is an off-policy algorithm, a replay buffer is used to store and sample experience tuples.<br>
+ In the tennis games, the two agents use the same actor and critic network, and share the replay buffer.
 
 #### Training process
 
@@ -57,14 +59,13 @@ WEIGHT_DECAY = 0        # L2 weight decay
 
 ## Training results
 
-![training result](train.png)
-
 ![Score chart](chart.png)
 
-The environment was solved in 125 episodes.
+The environment was solved in 3252 episodes.
 
 ## Ideas for future work
 
-First idea is fine tune the training parameter, such as a higher learning rate, higher factor of soft update or larger batch size of repaly buffer  to speed up the training. 
-Second option is exploring different neural network architectures, such as adding more layers to the neural networks, using different activation functions.
+First idea is fine tune the training parameter, such as a higher learning rate, higher factor of soft update or larger batch size of repaly buffer  to speed up the training. <br>
+Second option is using Prioritized Experience Replay. Instead of sampling experience buffer uniformly, more important buffer have higher priority and thus sampled with higher probability. To do so, the replay buffer is stored along with its calculated TD error. The bigger its error, the more we expect to learn and higher sampling probability is assigned. As a result, more important experiences are replayed more frequently and thus the agent learn more efficiently.<br>
+Third option is exploring different neural network architectures, such as adding more layers to the neural networks, using different activation functions.
 Finally, implementing more advanced reinforcement learning algorithms, such as Trust Region Policy Optimization (TRPO), Truncated Natural Policy Gradient (TNPG), or Distributed Distributional Deterministic Policy Gradients (D4PG), could also help to see whether any improvement of the agent's performance.

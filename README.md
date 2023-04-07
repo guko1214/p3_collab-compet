@@ -46,7 +46,7 @@ To set up your python environment to run the code in this repository, follow the
 	
 2. Clone the repository (if you haven't already!), and navigate to the `python/` folder.  Then, install several dependencies.
 ```bash
-git clone https://github.com/guko1214/p2_continuous-control
+git clone https://github.com/guko1214/p3__collab-compet
 cd python
 pip install .
 ```
